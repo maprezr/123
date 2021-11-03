@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="titulo">
+    <h1>Bienvenido a SISGE</h1>
+</div>
+<div class="subtitulo">
+    <H2>por favor seleccione el modulo al cual desea ingresar</H2>
+</div>
+<div class="filas contenedor">
+    <section class="targetas">
+        <div class="iconos">
+            <i class="far fa-handshake"></i>
+            <a>@Html.ActionLink("Clientes", "index", "clientes")</a>
+        </div>
+    </section>
+    <section class="targetas">
+        <div class="iconos">
+            <i class="fas fa-archive"></i>
+            <a> @Html.ActionLink("Productos", "index", "productoes")</a>
+        </div>
+    </section>
+</div>
+<div class="filas contenedor">
+    <section class="targetas">
+        <div class="iconos">
+            <i class="fas fa-cash-register"></i>
+            <a> @Html.ActionLink("Facturas", "index", "facturas") </a>
+        </div>
+    </section>
+    <section class="targetas">
+        <div class="iconos">
+            <i class="fas fa-child"></i>
+            <a> @Html.ActionLink("Vendedores", "index", "vendedors")</a>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,120 @@
+﻿:root {
+    --negro: #000000;
+    --azul:  #2b78e4;
+}
+html{
+    font-size:62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body{
+    font-size:16px
+}
+.contenedor {
+    max-width: 110rem;
+    margin: 0 auto;
+    padding-top:1px;
+    padding-bottom: 3rem;
+
+}
+.sombra{
+    -webkit-box-shadow: 0px 0px 9px 3px rgba(179,177,179,1);
+    -moz-box-shadow: 0px 0px 9px 3px rgba(179,177,179,1);
+    box-shadow: 0px 0px 9px 3px rgba(179,177,179,1);
+
+}
+.nav-bg {
+    background-color: var(--negro);
+}
+.navegacion-ppal {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    
+}
+@media (min-width: 768px) {
+    .navegacion-ppal{
+        flex-direction: row;
+        justify-content: space-between;
+        
+        
+        
+    }
+}
+.navegacion-ppal a{
+    display: block;
+    text-align:center;
+    color:white;    
+    text-decoration: none;
+    font-size: 2rem ;
+    font-weight: bold;
+    padding: 1rem;
+}
+.navegacion-ppal a:hover{
+    background-color: white;
+    color: var(--negro);
+
+    
+}
+.titulo,.subtitulo{
+    text-align: center;
+    font-size: 2rem;
+}
+.filas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom : 2rem;
+    
+}
+.targetas{
+    width: 247PX;
+    height: 130px;
+    background-color: black;
+    border-radius: 35px;
+    
+}
+.targetas .iconos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+.targetas i{
+    margin-top:2rem;
+    font-size: 4rem;
+    color: white;
+    
+}
+.targetas a{
+    text-transform: uppercase;
+    text-decoration:none;
+    color:white;
+    background-color:black;
+    padding: 0.5rem 4rem;
+    font-size:2rem;
+    margin:1rem;
+   
+}
+.boton {
+    width:20rem;
+    height:4rem;
+    
+}
+
+footer{
+    margin:2rem;
+    text-align:center;
+}
+.formulario{
+    display: block;
+   
+}
+.grupo_formulario {
+    justify-content: center;
+}

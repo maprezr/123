@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoPapaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazonSocial" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nit" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__Id_prod__05D8E0BE" FromRole="cliente" ToRole="factura" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="11" Scale="2" Nullable="false" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__Id_prod__07C12930" FromRole="producto" ToRole="factura" />
+  </EntityType>
+  <EntityType Name="vendedor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nit" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__Id_vend__06CD04F7" FromRole="vendedor" ToRole="factura" />
+  </EntityType>
+  <EntityType Name="factura">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="fecha" />
+      <PropertyRef Name="Id_cliente" />
+      <PropertyRef Name="Id_vendedor" />
+      <PropertyRef Name="Id_producto" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_cliente" Type="Int32" Nullable="false" />
+    <Property Name="Id_vendedor" Type="Int32" Nullable="false" />
+    <Property Name="Id_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__factura__Id_prod__05D8E0BE" FromRole="factura" ToRole="cliente" />
+    <NavigationProperty Name="producto" Relationship="Self.FK__factura__Id_prod__07C12930" FromRole="factura" ToRole="producto" />
+    <NavigationProperty Name="vendedor" Relationship="Self.FK__factura__Id_vend__06CD04F7" FromRole="factura" ToRole="vendedor" />
+  </EntityType>
+  <Association Name="FK__factura__Id_prod__05D8E0BE">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__factura__Id_prod__07C12930">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__factura__Id_vend__06CD04F7">
+    <End Role="vendedor" Type="Self.vendedor" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vendedor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Id_vendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectoPapaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="producto" EntityType="Self.producto" />
+    <EntitySet Name="vendedor" EntityType="Self.vendedor" />
+    <EntitySet Name="factura" EntityType="Self.factura" />
+    <AssociationSet Name="FK__factura__Id_prod__05D8E0BE" Association="Self.FK__factura__Id_prod__05D8E0BE">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__factura__Id_prod__07C12930" Association="Self.FK__factura__Id_prod__07C12930">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__factura__Id_vend__06CD04F7" Association="Self.FK__factura__Id_vend__06CD04F7">
+      <End Role="vendedor" EntitySet="vendedor" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

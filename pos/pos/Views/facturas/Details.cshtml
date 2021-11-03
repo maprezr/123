@@ -1,0 +1,43 @@
+﻿@model pos.Models.factura
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.RazonSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.RazonSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producto.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vendedor.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vendedor.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
